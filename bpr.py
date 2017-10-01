@@ -128,7 +128,7 @@ def generate_train_batch(data, user_ratings_test, item_count, batch_size=512):
     return np.asarray(t)
 
 def generate_test_batch(user_ratings, user_ratings_test, item_count):
-    for u in np.random.choice(list(user_ratings.keys()),300):
+    for u in np.random.choice(list(user_ratings.keys()),500):
         t = []
         i = user_ratings_test[u]
         for j in range(1, item_count+1):
@@ -187,7 +187,7 @@ def bpr(user_count, item_count, hidden_dim, batch_size=512):
     regu_rate = 0.0001
     loss = - tf.reduce_mean(tf.log(tf.sigmoid(x))) + regu_rate * l2_norm
     
-    train_op = tf.train.AdamOptimizer(0.001).minimize(loss)
+    train_op = tf.train.AdamOptimizer(0.0001).minimize(loss)
     return u, i, j, auc_per_user, loss, train_op
 
 
@@ -213,7 +213,7 @@ with tf.Session() as session:
             user_count += 1
             _auc_sum += _auc_per_user
             
-            _auc = _auc_sum/user_count # eq (1) in the paper
+        _auc = _auc_sum/user_count # eq (1) in the paper
             
         print("test loss: ", _test_loss, ", test auc: ", _auc)
 

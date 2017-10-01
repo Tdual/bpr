@@ -11970,7 +11970,7 @@ user count:  5922
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">generate_test_batch</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">,</span> <span class="n">user_ratings_test</span><span class="p">,</span> <span class="n">item_count</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">user_ratings</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="mi">300</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">user_ratings</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="mi">500</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">user_ratings_test</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">item_count</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -12053,7 +12053,7 @@ user count:  5922
     <span class="n">regu_rate</span> <span class="o">=</span> <span class="mf">0.0001</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">+</span> <span class="n">regu_rate</span> <span class="o">*</span> <span class="n">l2_norm</span>
     
-    <span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">auc_per_user</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span>
 </pre></div>
 
@@ -12087,7 +12087,7 @@ user count:  5922
             <span class="n">user_count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">_auc_sum</span> <span class="o">+=</span> <span class="n">_auc_per_user</span>
             
-            <span class="n">_auc</span> <span class="o">=</span> <span class="n">_auc_sum</span><span class="o">/</span><span class="n">user_count</span> <span class="c1"># eq (1) in the paper</span>
+        <span class="n">_auc</span> <span class="o">=</span> <span class="n">_auc_sum</span><span class="o">/</span><span class="n">user_count</span> <span class="c1"># eq (1) in the paper</span>
             
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test loss: &quot;</span><span class="p">,</span> <span class="n">_test_loss</span><span class="p">,</span> <span class="s2">&quot;, test auc: &quot;</span><span class="p">,</span> <span class="n">_auc</span><span class="p">)</span>
 </pre></div>
@@ -12103,17 +12103,39 @@ user count:  5922
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-epoch:  0 , loss:  0.0162568666782
+epoch:  0 , loss:  0.103536615314
 
-test loss:  0.00643112 , test auc:  0.896666666667
+test loss:  0.00474381 , test auc:  0.872
 
-epoch:  1 , loss:  0.000889380645967
+epoch:  1 , loss:  0.00158002658971
 
-test loss:  0.00436507 , test auc:  0.886666666667
+test loss:  0.00472847 , test auc:  0.89
 
-epoch:  2 , loss:  0.000827804737113
+epoch:  2 , loss:  0.000997846030397
 
-test loss:  0.00473092 , test auc:  0.896666666667
+test loss:  0.00732075 , test auc:  0.894
+
+epoch:  3 , loss:  0.000909460627357
+
+test loss:  0.0069152 , test auc:  0.904
+
+epoch:  4 , loss:  0.000881892441044
+
+test loss:  0.00696584 , test auc:  0.856
+
+epoch:  5 , loss:  0.000846705647185
+
+test loss:  0.00704901 , test auc:  0.92
+
+epoch:  6 , loss:  0.000802511988761
+
+test loss:  0.00519197 , test auc:  0.912
+
+epoch:  7 , loss:  0.000777330828772
+
+test loss:  inf , test auc:  0.912
+
+epoch:  8 , loss:  0.000768964144139
 </pre>
 </div>
 </div>
