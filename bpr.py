@@ -191,7 +191,7 @@ def bpr(user_count, item_count, hidden_dim, batch_size=512):
     return u, i, j, auc_per_user, loss, train_op
 
 
-# In[ ]:
+# In[12]:
 
 with tf.Session() as session:
     u, i, j, auc_per_user, loss, train_op = bpr(user_count, item_count, 20)
