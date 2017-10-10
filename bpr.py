@@ -4,7 +4,7 @@
 # data from https://grouplens.org/datasets/movielens/
 # 
 
-# In[1]:
+# In[17]:
 
 import numpy as np
 import tensorflow as tf
@@ -13,6 +13,7 @@ import gensim as gs
 try:
     # noinspection PyUnresolvedReferences
     if get_ipython().__class__.__name__ == 'ZMQInteractiveShell':
+        print("notebook")
         from tqdm import tqdm_notebook as tqdm
     else:
         raise RuntimeError
@@ -20,7 +21,7 @@ except (NameError, RuntimeError):
     from tqdm import tqdm
 
 
-# In[2]:
+# In[18]:
 
 def load_data(data_path):
     data = defaultdict(set)
@@ -40,7 +41,7 @@ def load_data(data_path):
     return max_u_id, max_i_id, data
 
 
-# In[3]:
+# In[19]:
 
 def map_data(data_path):
     line_list =[]
@@ -74,20 +75,20 @@ def map_data(data_path):
     return (user_count, item_count, d)
 
 
-# In[4]:
+# In[20]:
 
-user_count, item_count, data = map_data("./data.csv")
+#user_count, item_count, data = map_data("./data.csv")
 
 
-# In[5]:
+# In[21]:
 
 #data
 
 
-# In[6]:
+# In[22]:
 
-print("item count: ", item_count)
-print("user count: ", user_count)
+#print("item count: ", item_count)
+#print("user count: ", user_count)
 
 
 # In[ ]:
@@ -95,7 +96,7 @@ print("user count: ", user_count)
 
 
 
-# In[7]:
+# In[23]:
 
 def generate_test(data):
     user_test = dict()
@@ -104,14 +105,14 @@ def generate_test(data):
     return user_test
 
 
-# In[8]:
+# In[24]:
 
-#data_path = "./ml-20m/ratings.csv"
-#user_count, item_count, data = load_data(data_path)
+data_path = "./ml-20m/ratings.csv"
+user_count, item_count, data = load_data(data_path)
 user_ratings_test = generate_test(data)
 
 
-# In[9]:
+# In[25]:
 
 def generate_train_batch(data, user_ratings_test, item_count, batch_size=512):
     t = []
@@ -128,7 +129,7 @@ def generate_train_batch(data, user_ratings_test, item_count, batch_size=512):
     return np.asarray(t)
 
 def generate_test_batch(user_ratings, user_ratings_test, item_count):
-    for u in np.random.choice(list(user_ratings.keys()),500):
+    for u in np.random.choice(list(user_ratings.keys()),2):
         t = []
         i = user_ratings_test[u]
         for j in range(1, item_count+1):
@@ -137,12 +138,7 @@ def generate_test_batch(user_ratings, user_ratings_test, item_count):
         yield np.asarray(t)
 
 
-# In[ ]:
-
-
-
-
-# In[10]:
+# In[26]:
 
 def weight_variable(shape):
     return tf.Variable(tf.random_normal(shape, mean=0.0, stddev=0.01))
@@ -151,7 +147,7 @@ def bias_variable(shape):
     return tf.Variable(tf.random_normal(shape, mean=0.0, stddev=0.01))
 
 
-# In[11]:
+# In[27]:
 
 def bpr(user_count, item_count, hidden_dim, batch_size=512):
     
@@ -188,17 +184,23 @@ def bpr(user_count, item_count, hidden_dim, batch_size=512):
     loss = - tf.reduce_mean(tf.log(tf.sigmoid(x))) + regu_rate * l2_norm
     
     train_op = tf.train.AdamOptimizer(0.0001).minimize(loss)
-    return u, i, j, auc_per_user, loss, train_op
+    return u, i, j, auc_per_user, loss, train_op, user_w, item_w, item_b
 
 
-# In[12]:
+# In[28]:
+
+n_epoch = 2
+n_iter = 100
+
+
+# In[29]:
 
 with tf.Session() as session:
-    u, i, j, auc_per_user, loss, train_op = bpr(user_count, item_count, 20)
+    u, i, j, auc_per_user, loss, train_op,W_u,W_i,b_i = bpr(user_count, item_count, 20)
     session.run(tf.global_variables_initializer())
-    for epoch in range(10):
+    for epoch in range(n_epoch):
         _batch_loss = 0
-        for index in tqdm(range(2000)): 
+        for index in tqdm(range(n_iter)): 
             uij = generate_train_batch(data, user_ratings_test, item_count)
             _loss, _ = session.run([loss, train_op], feed_dict={u:uij[:,0], i:uij[:,1], j:uij[:,2]})
             _batch_loss += _loss
@@ -216,6 +218,25 @@ with tf.Session() as session:
         _auc = _auc_sum/user_count # eq (1) in the paper
             
         print("test loss: ", _test_loss, ", test auc: ", _auc)
+        wu, wi, bi = session.run([W_u, W_i, b_i])
+
+
+# In[ ]:
+
+
+
+
+# In[16]:
+
+def get_ranking(item_id):
+    #iid = self.item2id[item_id]
+    iid = item_id
+    item_vec = bi[iid] + wi[iid]
+    scores = np.dot(wu, item_vec)
+    res = [
+        (np.argsort(scores)[::-1][index],  np.sort(scores)[::-1][index]) for index in range(10)]
+    return res
+get_ranking(1)
 
 
 # In[ ]:

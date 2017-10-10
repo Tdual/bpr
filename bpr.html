@@ -11758,7 +11758,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -11768,6 +11768,7 @@ div#notebook {
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
     <span class="k">if</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;ZMQInteractiveShell&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
         <span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm_notebook</span> <span class="k">as</span> <span class="n">tqdm</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span>
@@ -11779,10 +11780,24 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>notebook
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
@@ -11810,7 +11825,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">map_data</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
@@ -11852,10 +11867,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_count</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">map_data</span><span class="p">(</span><span class="s2">&quot;./data.csv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#user_count, item_count, data = map_data(&quot;./data.csv&quot;)</span>
 </pre></div>
 
 </div>
@@ -11865,7 +11880,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#data</span>
@@ -11878,29 +11893,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;item count: &quot;</span><span class="p">,</span> <span class="n">item_count</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;user count: &quot;</span><span class="p">,</span> <span class="n">user_count</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#print(&quot;item count: &quot;, item_count)</span>
+<span class="c1">#print(&quot;user count: &quot;, user_count)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>item count:  30572
-user count:  5922
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -11920,7 +11920,7 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">generate_test</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -11937,11 +11937,11 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#data_path = &quot;./ml-20m/ratings.csv&quot;</span>
-<span class="c1">#user_count, item_count, data = load_data(data_path)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;./ml-20m/ratings.csv&quot;</span>
+<span class="n">user_count</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
 <span class="n">user_ratings_test</span> <span class="o">=</span> <span class="n">generate_test</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
@@ -11952,7 +11952,7 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">generate_train_batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">user_ratings_test</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
@@ -11970,7 +11970,7 @@ user count:  5922
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">generate_test_batch</span><span class="p">(</span><span class="n">user_ratings</span><span class="p">,</span> <span class="n">user_ratings_test</span><span class="p">,</span> <span class="n">item_count</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">user_ratings</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="mi">500</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">user_ratings</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="mi">2</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">user_ratings_test</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">item_count</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -11986,20 +11986,7 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">weight_variable</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
@@ -12016,7 +12003,7 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bpr</span><span class="p">(</span><span class="n">user_count</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
@@ -12054,7 +12041,7 @@ user count:  5922
     <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">+</span> <span class="n">regu_rate</span> <span class="o">*</span> <span class="n">l2_norm</span>
     
     <span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">auc_per_user</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">auc_per_user</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span><span class="p">,</span> <span class="n">user_w</span><span class="p">,</span> <span class="n">item_w</span><span class="p">,</span> <span class="n">item_b</span>
 </pre></div>
 
 </div>
@@ -12064,15 +12051,29 @@ user count:  5922
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_epoch</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-    <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">auc_per_user</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span> <span class="o">=</span> <span class="n">bpr</span><span class="p">(</span><span class="n">user_count</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">auc_per_user</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span><span class="p">,</span><span class="n">W_u</span><span class="p">,</span><span class="n">W_i</span><span class="p">,</span><span class="n">b_i</span> <span class="o">=</span> <span class="n">bpr</span><span class="p">(</span><span class="n">user_count</span><span class="p">,</span> <span class="n">item_count</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
     <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epoch</span><span class="p">):</span>
         <span class="n">_batch_loss</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">)):</span> 
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)):</span> 
             <span class="n">uij</span> <span class="o">=</span> <span class="n">generate_train_batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">user_ratings_test</span><span class="p">,</span> <span class="n">item_count</span><span class="p">)</span>
             <span class="n">_loss</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">u</span><span class="p">:</span><span class="n">uij</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">:</span><span class="n">uij</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">j</span><span class="p">:</span><span class="n">uij</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]})</span>
             <span class="n">_batch_loss</span> <span class="o">+=</span> <span class="n">_loss</span>
@@ -12090,6 +12091,7 @@ user count:  5922
         <span class="n">_auc</span> <span class="o">=</span> <span class="n">_auc_sum</span><span class="o">/</span><span class="n">user_count</span> <span class="c1"># eq (1) in the paper</span>
             
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test loss: &quot;</span><span class="p">,</span> <span class="n">_test_loss</span><span class="p">,</span> <span class="s2">&quot;, test auc: &quot;</span><span class="p">,</span> <span class="n">_auc</span><span class="p">)</span>
+        <span class="n">wu</span><span class="p">,</span> <span class="n">wi</span><span class="p">,</span> <span class="n">bi</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">W_u</span><span class="p">,</span> <span class="n">W_i</span><span class="p">,</span> <span class="n">b_i</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12101,49 +12103,178 @@ user count:  5922
 
 
 <div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<p>Failed to display Jupyter Widget of type <code>HBox</code>.</p>
+<p>
+  If you're reading this message in Jupyter Notebook or JupyterLab, it may mean
+  that the widgets JavaScript is still loading. If this message persists, it
+  likely means that the widgets JavaScript library is either not installed or
+  not enabled. See the <a href="https://ipywidgets.readthedocs.io/en/stable/user_install.html">Jupyter
+  Widgets Documentation</a> for setup instructions.
+</p>
+<p>
+  If you're reading this message in another notebook frontend (for example, a static
+  rendering on GitHub or <a href="https://nbviewer.jupyter.org/">NBViewer</a>),
+  it may mean that your frontend doesn't currently support widgets.
+</p>
+
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-epoch:  0 , loss:  0.103536615314
-
-test loss:  0.00474381 , test auc:  0.872
-
-epoch:  1 , loss:  0.00158002658971
-
-test loss:  0.00472847 , test auc:  0.89
-
-epoch:  2 , loss:  0.000997846030397
-
-test loss:  0.00732075 , test auc:  0.894
-
-epoch:  3 , loss:  0.000909460627357
-
-test loss:  0.0069152 , test auc:  0.904
-
-epoch:  4 , loss:  0.000881892441044
-
-test loss:  0.00696584 , test auc:  0.856
-
-epoch:  5 , loss:  0.000846705647185
-
-test loss:  0.00704901 , test auc:  0.92
-
-epoch:  6 , loss:  0.000802511988761
-
-test loss:  0.00519197 , test auc:  0.912
-
-epoch:  7 , loss:  0.000777330828772
-
-test loss:  inf , test auc:  0.912
-
-epoch:  8 , loss:  0.000768964144139
-
-test loss:  0.00471564 , test auc:  0.902
-
-epoch:  9 , loss:  0.000765336753306
-
-test loss:  0.00584011 , test auc:  0.906
+epoch:  0 , loss:  0.523077083528
 </pre>
 </div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<p>Failed to display Jupyter Widget of type <code>HBox</code>.</p>
+<p>
+  If you're reading this message in Jupyter Notebook or JupyterLab, it may mean
+  that the widgets JavaScript is still loading. If this message persists, it
+  likely means that the widgets JavaScript library is either not installed or
+  not enabled. See the <a href="https://ipywidgets.readthedocs.io/en/stable/user_install.html">Jupyter
+  Widgets Documentation</a> for setup instructions.
+</p>
+<p>
+  If you're reading this message in another notebook frontend (for example, a static
+  rendering on GitHub or <a href="https://nbviewer.jupyter.org/">NBViewer</a>),
+  it may mean that your frontend doesn't currently support widgets.
+</p>
+
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+test loss:  0.00272418 , test auc:  0.5
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<p>Failed to display Jupyter Widget of type <code>HBox</code>.</p>
+<p>
+  If you're reading this message in Jupyter Notebook or JupyterLab, it may mean
+  that the widgets JavaScript is still loading. If this message persists, it
+  likely means that the widgets JavaScript library is either not installed or
+  not enabled. See the <a href="https://ipywidgets.readthedocs.io/en/stable/user_install.html">Jupyter
+  Widgets Documentation</a> for setup instructions.
+</p>
+<p>
+  If you're reading this message in another notebook frontend (for example, a static
+  rendering on GitHub or <a href="https://nbviewer.jupyter.org/">NBViewer</a>),
+  it may mean that your frontend doesn't currently support widgets.
+</p>
+
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+epoch:  1 , loss:  0.103809440173
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<p>Failed to display Jupyter Widget of type <code>HBox</code>.</p>
+<p>
+  If you're reading this message in Jupyter Notebook or JupyterLab, it may mean
+  that the widgets JavaScript is still loading. If this message persists, it
+  likely means that the widgets JavaScript library is either not installed or
+  not enabled. See the <a href="https://ipywidgets.readthedocs.io/en/stable/user_install.html">Jupyter
+  Widgets Documentation</a> for setup instructions.
+</p>
+<p>
+  If you're reading this message in another notebook frontend (for example, a static
+  rendering on GitHub or <a href="https://nbviewer.jupyter.org/">NBViewer</a>),
+  it may mean that your frontend doesn't currently support widgets.
+</p>
+
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+test loss:  0.00403971 , test auc:  1.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_ranking</span><span class="p">(</span><span class="n">item_id</span><span class="p">):</span>
+    <span class="c1">#iid = self.item2id[item_id]</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">item_id</span>
+    <span class="n">item_vec</span> <span class="o">=</span> <span class="n">bi</span><span class="p">[</span><span class="n">iid</span><span class="p">]</span> <span class="o">+</span> <span class="n">wi</span><span class="p">[</span><span class="n">iid</span><span class="p">]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">wu</span><span class="p">,</span> <span class="n">item_vec</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">scores</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">],</span>  <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">scores</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">])</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="n">get_ranking</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(6, 0.0076993555),
+ (2, 0.0071001169),
+ (3, 0.0069256714),
+ (11, 0.0068852566),
+ (1, 0.0066500311),
+ (8, 0.0064714537),
+ (7, 0.0062475754),
+ (9, 0.0060672043),
+ (4, 0.0059733787),
+ (5, 0.0055784159)]</pre>
+</div>
+
 </div>
 
 </div>
